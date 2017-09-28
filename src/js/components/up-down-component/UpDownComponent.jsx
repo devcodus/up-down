@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"
+import { connect } from 'react-redux';
 
-@connect((store) => {
-  return {
-    count: store.count.count
-  };
-})
-
-export default class UpDown extends Component {
+export class UpDownComponent extends Component {
   constructor(props) {
     super(props);
     console.log(props);
@@ -28,7 +22,7 @@ export default class UpDown extends Component {
   }
 
   render() {
-    const { count } = this.state;
+    const { count } = this.state; // how would I do this with redux?
     return (
       <div>
         <p>{count}</p>
@@ -39,3 +33,5 @@ export default class UpDown extends Component {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpDownComponent);

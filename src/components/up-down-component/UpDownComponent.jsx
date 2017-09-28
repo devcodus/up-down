@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { incrementCount, decrementCount } from '../../redux/actions/CountActions';
+import { incrementCount, decrementCount } from '../../js/redux/actions/CountActions';
 
 // @connect((store) => {
 //   return {
@@ -26,7 +26,7 @@ class UpDown extends Component {
   // }
   // decrementCount() {
   //   this.setState({ count: this.state.count - 1 });
-  // }
+  }
 
   render() {
     const { count } = this.state;

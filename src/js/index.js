@@ -1,16 +1,20 @@
 import { createStore } from 'redux';
-// import { reducer } from 'redux-form';
+import appReducer from './redux/reducers/index';
 //
-//
-// export
-const reducer = function(state, action){
-  return "foo";
-}
 
-const store = createStore(reducer, 0);
+// export
+// const reducer = function(state, action){
+// // input code here
+// };
+
+const store = createStore(appReducer, 0);
 
 store.subscribe(() => {
-  console.log("store changed", store.getState())
-})
+  console.log('store changed', store.getState());
+});
 
-store.dispatch({type: "INCREASE_COUNT", payload: 1})
+store.dispatch({ type: 'INCREASE_COUNT', payload: 1 });
+
+export default store;
+
+// what's my target today? have this file run on the compiler and localhost
