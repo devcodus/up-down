@@ -11,3 +11,5 @@ export function decrementCount(count) {
     payload: count,
   };
 }
+
+// __________________________ //?// what's the difference between the functions above and the const below?

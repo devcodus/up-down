@@ -14,6 +14,5 @@ const countReducer = (state = { count: 0 }, action) => {
 export default countReducer;
 // import count from './countReducer'
 
-// delete extra redux folder - salvage necessary bits first
 // push to repo
 // check in with Jay
