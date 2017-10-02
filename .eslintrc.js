@@ -35,6 +35,7 @@ module.exports = {
     "react/no-array-index-key": 1,
     "react/prop-types": 0,
     "react/require-default-props": 0,
+    "react/jsx-filename-extension": 0,
     "react/forbid-prop-types": 1,
   },
 };

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { incrementCount, decrementCount } from '../../js/redux/actions/CountActions';
-
-// @connect((store) => {
-//   return {
-//     count: store.count.count
-//   };
-// })
+import { increaseCount, decreaseCount } from '../../js/redux/actions/CountActions';
 
 class UpDown extends Component {
   constructor(props) {
@@ -19,8 +13,8 @@ class UpDown extends Component {
     return (
       <div>
         <p>{count}</p>
-        <button type="button" name="Increment" onClick={this.incrementCount} >Up</button>
-        <button type="button" name="Decrement" onClick={this.decrementCount} >Down</button>
+        <button type="button" onClick={this.props.increaseCount} >Up</button>
+        <button type="button" onClick={this.props.decreaseCount} >Down</button>
       </div>
     );
   }
@@ -28,13 +22,13 @@ class UpDown extends Component {
 }
 
 const mapStateToProps = state => ({
-  count: state.count,
+  count: state,
 });
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
-  incrementCount: count => dispatch(incrementCount(count)),
-  decrementCount: count => dispatch(decrementCount(count)),
+  increaseCount: () => dispatch(increaseCount(1)),
+  decreaseCount: () => dispatch(decreaseCount(1)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
