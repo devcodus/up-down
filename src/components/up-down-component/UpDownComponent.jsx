@@ -13,17 +13,26 @@ class UpDown extends Component {
   increaseCount(event) {
     event.preventDefault();
     const inputCount = event.target.elements[0];
-    this.props.increaseCount(inputCount.valueAsNumber);
+    if (inputCount.valueAsNumber) {
+      this.props.increaseCount(inputCount.valueAsNumber);
     // debugger;
-    inputCount.value = '';
+      inputCount.value = '';
+      }
+    else {
+      return null;
+    }
   }
 
   decreaseCount(event) {
     event.preventDefault();
     const inputCount = event.target.elements[0];
-
-    this.props.decreaseCount(inputCount.valueAsNumber);
-    inputCount.value = '';
+    if (inputCount.valueAsNumber) {
+      this.props.decreaseCount(inputCount.valueAsNumber);
+      inputCount.value = '';
+    }
+    else {
+      return null;
+    }
   }
 
   render() {
