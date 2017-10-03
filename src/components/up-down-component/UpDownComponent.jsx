@@ -6,15 +6,41 @@ class UpDown extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    this.increaseCount = this.increaseCount.bind(this);
+    this.decreaseCount = this.decreaseCount.bind(this);
+  }
+
+  increaseCount(event) {
+    event.preventDefault();
+    const inputCount = event.target.elements[0];
+    this.props.increaseCount(inputCount.valueAsNumber);
+    // debugger;
+    inputCount.value = '';
+  }
+
+  decreaseCount(event) {
+    event.preventDefault();
+    const inputCount = event.target.elements[0];
+
+    this.props.decreaseCount(inputCount.valueAsNumber);
+    inputCount.value = '';
   }
 
   render() {
-    const { count } = this.props;
+    const { up, down } = this.props;
     return (
       <div>
-        <p>{count}</p>
-        <button type="button" onClick={this.props.increaseCount} >Up</button>
-        <button type="button" onClick={this.props.decreaseCount} >Down</button>
+        <p>{up + down}</p>
+
+        <form onSubmit={this.increaseCount}>
+          <input type="number" />
+          <input type="submit" value="Up" />
+        </form>
+
+        <form onSubmit={this.decreaseCount}>
+          <input type="number" />
+          <input type="submit" value="Down" />
+        </form>
       </div>
     );
   }
@@ -22,13 +48,14 @@ class UpDown extends Component {
 }
 
 const mapStateToProps = state => ({
-  count: state,
+  up: state.upCount,
+  down: state.downCount,
 });
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
-  increaseCount: () => dispatch(increaseCount(1)),
-  decreaseCount: () => dispatch(decreaseCount(1)),
+  increaseCount: count => dispatch(increaseCount(count)),
+  decreaseCount: count => dispatch(decreaseCount(count)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(

@@ -37,5 +37,6 @@ module.exports = {
     "react/require-default-props": 0,
     "react/jsx-filename-extension": 0,
     "react/forbid-prop-types": 1,
+    "max-len": 0,
   },
 };
