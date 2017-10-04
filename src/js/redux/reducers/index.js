@@ -3,8 +3,8 @@ import countReducer from './countReducer';
 import inputChangeReducer from './inputChangeReducer';
 
 const appReducer = combineReducers({
-  change: countReducer,
-  number: inputChangeReducer,
+  total: countReducer,
+  change: inputChangeReducer,
 
 });
 

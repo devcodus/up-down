@@ -12,28 +12,12 @@ class UpDown extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  increaseCount(event) {
-    const inputCount = event.target;
-    // if (inputCount.valueAsNumber) {
-      this.props.increaseCount(inputCount.valueAsNumber);
-    // debugger;
-      // inputCount.value = '';
-      // }
-    // else {
-    //   return null;
-    // }
+  increaseCount() {
+      this.props.increaseCount(this.props.change);
   }
 
   decreaseCount(event) {
-    const inputCount = event.target;
-    // if (inputCount.valueAsNumber) {
-      this.props.decreaseCount(inputCount.valueAsNumber);
-
-      // inputCount.value = '';
-    // }
-    // else {
-      // return null;
-    // }
+      this.props.decreaseCount(this.props.change);
   }
 
   handleChange(event) {
@@ -58,14 +42,15 @@ class UpDown extends Component {
 const mapStateToProps = state => ({
   // up: state.upCount,
   // down: state.downCount,
-  count: state.number,
+  count: state.total,
+  change: state.change,
 });
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
   increaseCount: change => dispatch(increaseCount(change)),
   decreaseCount: change => dispatch(decreaseCount(change)),
-  changeInput: number => dispatch(changeInput(number)),
+  changeInput: total => dispatch(changeInput(total)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
