@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import upCountReducer from './upCountReducer';
-import downCountReducer from './downCountReducer';
+import countReducer from './countReducer';
+import inputChangeReducer from './inputChangeReducer';
 
 const appReducer = combineReducers({
-  // count: countReducer,
-  upCount: upCountReducer, // make this a clear understanding
-  downCount: downCountReducer,
+  change: countReducer,
+  number: inputChangeReducer,
 
 });
 

@@ -1,11 +1,12 @@
-const countReducer = (state, action) => {
+const countReducer = (state = {}, action) => {
   const { type, payload } = action;
   switch (type) {
     case 'INCREASE_COUNT':
-      return state + payload;
+    debugger;
+      return state.number + state.change;
 
     case 'DECREASE_COUNT':
-      return state - payload;
+      return state.number - state.change;
 
     default:
       return state;

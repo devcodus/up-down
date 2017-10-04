@@ -1,13 +1,13 @@
-export function increaseCount(count) {
+export function increaseCount() {
   return {
     type: 'INCREASE_COUNT',
-    payload: count,
+    // payload: ,
   };
 }
 
-export function decreaseCount(count) {
+export function decreaseCount() {
   return {
     type: 'DECREASE_COUNT',
-    payload: count,
+    // payload: ,
   };
 }

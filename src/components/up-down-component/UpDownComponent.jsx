@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { increaseCount, decreaseCount } from '../../js/redux/actions/CountActions';
+import { changeInput } from '../../js/redux/actions/InputChangeActions';
 
 class UpDown extends Component {
   constructor(props) {
@@ -8,48 +9,46 @@ class UpDown extends Component {
     console.log(props);
     this.increaseCount = this.increaseCount.bind(this);
     this.decreaseCount = this.decreaseCount.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   increaseCount(event) {
-    event.preventDefault();
-    const inputCount = event.target.elements[0];
-    if (inputCount.valueAsNumber) {
+    const inputCount = event.target;
+    // if (inputCount.valueAsNumber) {
       this.props.increaseCount(inputCount.valueAsNumber);
     // debugger;
-      inputCount.value = '';
-      }
-    else {
-      return null;
-    }
+      // inputCount.value = '';
+      // }
+    // else {
+    //   return null;
+    // }
   }
 
   decreaseCount(event) {
-    event.preventDefault();
-    const inputCount = event.target.elements[0];
-    if (inputCount.valueAsNumber) {
+    const inputCount = event.target;
+    // if (inputCount.valueAsNumber) {
       this.props.decreaseCount(inputCount.valueAsNumber);
-      inputCount.value = '';
-    }
-    else {
-      return null;
-    }
+
+      // inputCount.value = '';
+    // }
+    // else {
+      // return null;
+    // }
+  }
+
+  handleChange(event) {
+    this.props.changeInput(event.target.valueAsNumber);
   }
 
   render() {
-    const { up, down } = this.props;
+    const { count } = this.props;
     return (
       <div>
-        <p>{up + down}</p>
+        <p>{count}</p>
 
-        <form onSubmit={this.increaseCount}>
-          <input type="number" />
-          <input type="submit" value="Up" />
-        </form>
-
-        <form onSubmit={this.decreaseCount}>
-          <input type="number" />
-          <input type="submit" value="Down" />
-        </form>
+        <input type="number" onChange={this.handleChange} />
+        <button onClick={this.increaseCount}>+</button>
+        <button onClick={this.decreaseCount}>-</button>
       </div>
     );
   }
@@ -57,14 +56,16 @@ class UpDown extends Component {
 }
 
 const mapStateToProps = state => ({
-  up: state.upCount,
-  down: state.downCount,
+  // up: state.upCount,
+  // down: state.downCount,
+  count: state.number,
 });
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
-  increaseCount: count => dispatch(increaseCount(count)),
-  decreaseCount: count => dispatch(decreaseCount(count)),
+  increaseCount: change => dispatch(increaseCount(change)),
+  decreaseCount: change => dispatch(decreaseCount(change)),
+  changeInput: number => dispatch(changeInput(number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
